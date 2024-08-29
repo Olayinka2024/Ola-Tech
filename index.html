@@ -59,14 +59,23 @@
             <li><a href="#"><i class="fa fa-phone"></i>Contact</a>
                 <div class="sub-menu-1">
                     <ul>
-                        <li><a href="#">Email Us</a></li>
-                        <li><a href="#">Call Us</a></li>
-                        <li><a href="#">Visit Us</a></li>
-                        <li><a href="#">Feedback Form</a></li>
+                        <li><a href="#email-us" onclick="showContact('email')">Email Us</a></li>
+                        <li><a href="#call-us" onclick="showContact('call')">Call Us</a></li>
+                        <li><a href="#visit-us" onclick="showContact('visit')">Visit Us</a></li>
+                        <li><a href="#feedback-form" onclick="showContact('feedback')">Feedback Form</a></li>
                     </ul>
                 </div>
             </li>
         </ul>
     </nav>
+
+    <!-- Hidden Contact Section Content -->
+    <div class="contact-section">
+        <div id="contact-content" class="contact-box">
+            <!-- Content will be displayed here based on the click -->
+        </div>
+    </div>
+
+    <script src="script.js"></script>
 </body>
 </html>
