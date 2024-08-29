@@ -1,22 +1,56 @@
-function showContactSection(type) {
-    const contactContent = document.getElementById('contact-content');
-    let content = '';
+document.addEventListener('DOMContentLoaded', function () {
+    // Form Validation
+    const form = document.querySelector('form');
+    form.addEventListener('submit', function (event) {
+        const name = document.getElementById('name');
+        const email = document.getElementById('email');
+        const message = document.getElementById('message');
 
-    switch(type) {
-        case 'email':
-            content = '<h2>Email Us</h2><p>Reach out to us at contact@ola-tech.com</p>';
-            break;
-        case 'call':
-            content = '<h2>Call Us</h2><p>Give us a call at +234 123 456 7890</p>';
-            break;
-        case 'visit':
-            content = '<h2>Visit Us</h2><p>Find us at 123 Tech Road, Lagos, Nigeria</p>';
-            break;
-        case 'feedback':
-            content = '<h2>Feedback Form</h2><p>We value your feedback. <a href="feedback-form.html">Click here</a> to fill out the form.</p>';
-            break;
+        if (!name.value || !email.value || !message.value) {
+            alert('Please fill out all fields.');
+            event.preventDefault();
+        } else if (!validateEmail(email.value)) {
+            alert('Please enter a valid email address.');
+            event.preventDefault();
+        }
+    });
+
+    function validateEmail(email) {
+        const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        return re.test(String(email).toLowerCase());
     }
 
-    contactContent.innerHTML = content;
-    document.getElementById('contact-section').style.display = 'block';
-}
+    // Search Functionality
+    const searchButton = document.querySelector('.search-button');
+    searchButton.addEventListener('click', function () {
+        const searchInput = document.querySelector('.search-input');
+        alert('Searching for: ' + searchInput.value);
+        // Implement actual search functionality here
+    });
+
+    // Interactive Elements
+    const hoverButtons = document.querySelectorAll('.hover-button');
+    hoverButtons.forEach(button => {
+        button.addEventListener('mouseover', function () {
+            button.style.backgroundColor = 'white';
+            button.style.color = '#4CAF50';
+        });
+
+        button.addEventListener('mouseout', function () {
+            button.style.backgroundColor = '#003049';
+            button.style.color = 'white';
+        });
+    });
+
+    const rooms = document.querySelectorAll('.room img');
+    rooms.forEach(room => {
+        room.addEventListener('mouseover', function () {
+            room.style.transform = 'scale(1.1)';
+            room.style.transition = 'transform 0.3s';
+        });
+
+        room.addEventListener('mouseout', function () {
+            room.style.transform = 'scale(1)';
+        });
+    });
+});
